@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — LitterCheck</title>
+  <meta name="description" content="Get help with LitterCheck — FAQs, troubleshooting, and direct support contact.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0F1318;
+      --surface:     #161D27;
+      --surface-2:   #1C2535;
+      --border:      #253040;
+      --border-dim:  rgba(37, 48, 64, 0.6);
+      --text:        #E8EEF4;
+      --muted:       rgba(232, 238, 244, 0.45);
+      --accent:      #5B9EC9;
+      --accent-dim:  rgba(91, 158, 201, 0.12);
+      --accent-glow: rgba(91, 158, 201, 0.2);
+      --green:       #22C55E;
+      --green-dim:   rgba(34, 197, 94, 0.1);
+      --radius-sm:   10px;
+      --radius-md:   16px;
+      --radius-lg:   24px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent); text-decoration: none; transition: opacity 0.2s; }
+    a:hover { opacity: 0.75; }
+
+    /* ── Navigation ────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 24px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      background: rgba(15, 19, 24, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-dim);
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.3px;
+      color: var(--text);
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-icon svg { width: 18px; height: 18px; }
+
+    .nav-spacer { flex: 1; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-links a {
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.05);
+      opacity: 1;
+    }
+
+    /* ── Layout ─────────────────────────────────────────────────────────────── */
+    .page-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 120px 24px 80px;
+    }
+
+    /* ── Page header ────────────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 64px;
+      text-align: center;
+    }
+
+    .page-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(91,158,201,0.2);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.06;
+      margin-bottom: 16px;
+    }
+
+    .page-sub {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
+    /* ── Quick help chips ────────────────────────────────────────────────────── */
+    .quick-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 72px;
+    }
+
+    .quick-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 16px;
+      border-radius: 100px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+
+    .quick-chip:hover {
+      border-color: var(--accent);
+      color: var(--text);
+      background: var(--accent-dim);
+    }
+
+    /* ── Section headers ─────────────────────────────────────────────────────── */
+    .section-header {
+      margin-bottom: 24px;
+    }
+
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    /* ── FAQ ─────────────────────────────────────────────────────────────────── */
+    .faq {
+      margin-bottom: 72px;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item:hover {
+      border-color: rgba(91,158,201,0.4);
+    }
+
+    .faq-item + .faq-item {
+      margin-top: 8px;
+    }
+
+    .faq-summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      background: var(--surface);
+      transition: background 0.2s;
+    }
+
+    .faq-summary::-webkit-details-marker { display: none; }
+    .faq-summary::marker { display: none; }
+
+    .faq-q {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.35;
+    }
+
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.25s, background 0.2s;
+    }
+
+    .faq-chevron svg {
+      width: 12px;
+      height: 12px;
+      fill: var(--accent);
+      transition: transform 0.25s;
+    }
+
+    details[open] .faq-chevron svg {
+      transform: rotate(180deg);
+    }
+
+    details[open] .faq-summary {
+      background: var(--surface-2);
+    }
+
+    .faq-body {
+      padding: 0 24px 24px;
+      background: var(--surface);
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(232, 238, 244, 0.75);
+    }
+
+    details[open] .faq-body {
+      background: var(--surface-2);
+    }
+
+    .faq-body p { margin-bottom: 10px; }
+    .faq-body p:last-child { margin-bottom: 0; }
+
+    .faq-body ol, .faq-body ul {
+      margin: 10px 0 10px 20px;
+    }
+
+    .faq-body li { margin-bottom: 5px; }
+
+    .inline-code {
+      font-family: 'DM Mono', 'Fira Code', monospace;
+      font-size: 12px;
+      background: rgba(91,158,201,0.15);
+      color: var(--accent);
+      padding: 2px 7px;
+      border-radius: 5px;
+    }
+
+    /* ── Contact form ─────────────────────────────────────────────────────────── */
+    .contact-section {
+      border-top: 1px solid var(--border-dim);
+      padding-top: 72px;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .contact-card-header {
+      padding: 32px 36px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .contact-card-body {
+      padding: 36px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    input[type="text"]::placeholder,
+    input[type="email"]::placeholder,
+    textarea::placeholder {
+      color: var(--muted);
+      opacity: 0.8;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%235B9EC9'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 40px;
+      cursor: pointer;
+    }
+
+    select option {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+      font-size: 14px;
+    }
+
+    /* Character counter */
+    .field-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 4px;
+    }
+
+    .field-hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .char-count {
+      font-size: 12px;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Submit button */
+    .form-actions {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-send {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      background: var(--accent);
+      color: white;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-send:hover {
+      background: #6AAFD8;
+      transform: translateY(-1px);
+    }
+
+    .btn-send:active {
+      transform: translateY(0);
+    }
+
+    .btn-send svg {
+      width: 16px;
+      height: 16px;
+      fill: white;
+    }
+
+    .send-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* Validation state */
+    input.error, textarea.error, select.error {
+      border-color: #EF4444;
+    }
+
+    .error-msg {
+      font-size: 11px;
+      color: #EF4444;
+      margin-top: 3px;
+      display: none;
+    }
+
+    .error-msg.visible { display: block; }
+
+    /* Success banner */
+    .success-banner {
+      display: none;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--green-dim);
+      border: 1px solid rgba(34,197,94,0.3);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+    }
+
+    .success-banner.visible { display: flex; }
+
+    .success-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 18px;
+    }
+
+    .success-text {
+      font-size: 14px;
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    /* ── Alternate contact ────────────────────────────────────────────────────── */
+    .alt-contact {
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 22px;
+      background: var(--bg);
+      border: 1px solid var(--border-dim);
+      border-radius: var(--radius-md);
+    }
+
+    .alt-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .alt-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+    .alt-value { font-size: 14px; font-weight: 600; color: var(--accent); }
+
+    /* ── Footer ──────────────────────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border-dim);
+      padding: 40px 24px;
+      margin-top: 80px;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .footer-logo-icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo-icon svg { width: 13px; height: 13px; }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .footer-links a:hover { color: var(--text); opacity: 1; }
+
+    .footer-copy { font-size: 12px; color: var(--muted); }
+
+    /* ── Responsive ────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-group.full-width { grid-column: 1; }
+      .contact-card-body { padding: 24px; }
+      .contact-card-header { padding: 24px; }
+      .nav-links { display: none; }
+      .form-actions { flex-direction: column; align-items: flex-start; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ────────────────────────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M11.5 2.5L2 8l9.5 5.5L21 8l-9.5-5.5zM2 13l9.5 5.5L21 13M2 18l9.5 5.5L21 18" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        LitterCheck
+      </a>
+      <div class="nav-spacer"></div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page-wrapper">
+
+    <!-- ── Page header ──────────────────────────────────────────────────────── -->
+    <div class="page-header">
+      <div class="page-header-badge">Support Center</div>
+      <h1 class="page-title">How can we help?</h1>
+      <p class="page-sub">Find answers to common questions, or send us a message and we'll get back to you.</p>
+    </div>
+
+    <!-- ── Quick topic chips ────────────────────────────────────────────────── -->
+    <div class="quick-chips">
+      <button class="quick-chip" onclick="scrollToFaq(0)">Device Setup</button>
+      <button class="quick-chip" onclick="scrollToFaq(1)">Connection Issues</button>
+      <button class="quick-chip" onclick="scrollToFaq(2)">Sensor Readings</button>
+      <button class="quick-chip" onclick="scrollToFaq(3)">Multiple Cats</button>
+      <button class="quick-chip" onclick="scrollToFaq(4)">Manual Mode</button>
+      <button class="quick-chip" onclick="document.getElementById('contact-form').scrollIntoView({behavior:'smooth'})">Contact Us</button>
+    </div>
+
+    <!-- ── FAQ ──────────────────────────────────────────────────────────────── -->
+    <section class="faq" id="faq">
+      <div class="section-header">
+        <div class="section-label">Frequently asked</div>
+        <h2 class="section-title">Common questions</h2>
+      </div>
+
+      <div class="faq-list" id="faq-list">
+
+        <details id="faq-0">
+          <summary class="faq-summary">
+            <span class="faq-q">How do I connect my LitterCheck sensor to the app?</span>
+            <span class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+          </summary>
+          <div class="faq-body">
+            <p>To connect your sensor, open LitterCheck and navigate to the <strong>Monitor</strong> tab. If no device is set up, you'll be taken to the Connect screen automatically.</p>
+            <ol>
+              <li>Tap <strong>Connect a Device</strong>.</li>
+              <li>Enter your sensor's <strong>Device ID</strong> (printed on the back of the hardware unit, or in your device's firmware configuration).</li>
+              <li>Give your litter box a name and choose an icon.</li>
+              <li>Tap <strong>Connect</strong> — LitterCheck will verify the device ID and begin streaming data.</li>
+            </ol>
+            <p>If you don't have a hardware sensor, you can use <strong>Manual Mode</strong> instead — tap "Set Up Manually" on the Connect screen.</p>
+          </div>
+        </details>
+
+        <details id="faq-1">
+          <summary class="faq-summary">
+            <span class="faq-q">The app says "Could not load data" — what do I do?</span>
+            <span class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+          </summary>
+          <div class="faq-body">
+            <p>This usually means the app can't reach the Firebase database. Try the following steps in order:</p>
+            <ol>
+              <li><strong>Check your internet connection</strong> — the app needs network access to fetch sensor data.</li>
+              <li><strong>Tap Retry</strong> — use the Retry button shown on the error screen to re-attempt the connection.</li>
+              <li><strong>Check your sensor is powered on</strong> — if the hardware unit is off or not connected to Wi-Fi, it won't be publishing data.</li>
+              <li><strong>Pull to refresh</strong> — on the Monitor tab, pull down to force a refresh of the data stream.</li>
+            </ol>
+            <p>If the issue persists after all of the above, the device ID may have been entered incorrectly. Go to <strong>Settings → Remove Device</strong> and re-add it with the correct ID.</p>
+          </div>
+        </details>
+
+        <details id="faq-2">
+          <summary class="faq-summary">
+            <span class="faq-q">What do the VOC and IAQ readings mean?</span>
+            <span class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+          </summary>
+          <div class="faq-body">
+            <p><strong>VOC</strong> (Volatile Organic Compounds) are gases released by decomposing waste — primarily ammonia. The sensor measures these continuously using a metal-oxide (MOX) element.</p>
+            <p><strong>IAQ</strong> (Indoor Air Quality index) is a derived score calculated from VOC readings. It runs from roughly 0 (clean air) to 500+ (very poor air). A litter box at rest in a clean state typically reads below 150.</p>
+            <p>LitterCheck uses the trend and magnitude of VOC readings to determine whether the litter box is <strong>Clean</strong> (green) or <strong>Dirty</strong> (red). You can view the full history in <strong>Sensor Log</strong>, which is accessible from the Monitor tab.</p>
+          </div>
+        </details>
+
+        <details id="faq-3">
+          <summary class="faq-summary">
+            <span class="faq-q">How does the app handle multiple cats?</span>
+            <span class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+          </summary>
+          <div class="faq-body">
+            <p>When you set up a device or manual litter box, you can specify how many cats use it. This affects the <strong>recommended cleaning interval</strong>:</p>
+            <ul>
+              <li>1 cat — 48-hour grace period after marking as cleaned</li>
+              <li>2 cats — 24-hour grace period</li>
+              <li>3+ cats — 12-hour grace period</li>
+            </ul>
+            <p>After the grace period expires, the status reverts to whatever the sensor reports (or is shown as overdue in manual mode). You can update the cat count anytime in <strong>Settings → Device Settings</strong>.</p>
+            <p>Veterinarians recommend one litter box per cat, plus one extra. LitterCheck supports adding multiple devices — use the <strong>+ Add Another Device</strong> option in the profile switcher.</p>
+          </div>
+        </details>
+
+        <details id="faq-4">
+          <summary class="faq-summary">
+            <span class="faq-q">Can I use LitterCheck without a sensor?</span>
+            <span class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+          </summary>
+          <div class="faq-body">
+            <p>Yes — <strong>Manual Mode</strong> lets you use LitterCheck without any hardware sensor. It works as a smart cleaning tracker:</p>
+            <ul>
+              <li>You log each cleaning session manually by tapping <strong>Mark as Cleaned</strong>.</li>
+              <li>The app tracks the time elapsed and shows when a clean is recommended based on your cat count.</li>
+              <li>Historical cleaning logs are stored on-device.</li>
+            </ul>
+            <p>To set up manual mode, tap <strong>Connect a Device → Set Up Manually</strong> on the Connect screen. You can switch between manual and sensor-connected profiles from the device switcher at any time.</p>
+          </div>
+        </details>
+
+        <details id="faq-5">
+          <summary class="faq-summary">
+            <span class="faq-q">How do I add or switch between multiple litter boxes?</span>
+            <span class="faq-chevron"><svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+          </summary>
+          <div class="faq-body">
+            <p>LitterCheck supports multiple devices and manual profiles in one app:</p>
+            <ol>
+              <li>On any tab, tap the <strong>device name</strong> at the top of the screen to open the device switcher.</li>
+              <li>Tap <strong>Add Another Device</strong> at the bottom to connect a new sensor or create a new manual profile.</li>
+              <li>Tap any device in the list to switch to it immediately.</li>
+            </ol>
+            <p>Each device profile has its own name, icon, cat count, and history. You can rename or remove profiles in <strong>Settings</strong>.</p>
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- ── Contact form ──────────────────────────────────────────────────────── -->
+    <section class="contact-section" id="contact-form">
+      <div class="section-header" style="margin-bottom:28px;">
+        <div class="section-label">Direct support</div>
+        <h2 class="section-title">Send us a message</h2>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <p style="font-size:14px;color:var(--muted);line-height:1.6;">
+            Fill in the form below and click <strong style="color:var(--text);">Open in Email App</strong>. Your email application will open with the form pre-filled — just hit send. We aim to respond within 1–2 business days.
+          </p>
+        </div>
+
+        <div class="contact-card-body">
+          <div class="success-banner" id="success-banner">
+            <div class="success-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="#22C55E"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+            <div class="success-text">Your email app has been opened with your message pre-filled. Just press send!</div>
+          </div>
+
+          <form id="support-form" novalidate>
+            <div class="form-grid">
+
+              <div class="form-group">
+                <label for="field-name">Your Name</label>
+                <input type="text" id="field-name" name="name" placeholder="Your name" autocomplete="name">
+                <span class="error-msg" id="err-name">Please enter your name.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="field-email">Your Email</label>
+                <input type="email" id="field-email" name="email" placeholder="your@email.com" autocomplete="email">
+                <span class="error-msg" id="err-email">Please enter a valid email address.</span>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="field-category">Support Category</label>
+                <select id="field-category" name="category">
+                  <option value="General Question">General Question</option>
+                  <option value="Device Setup &amp; Connection">Device Setup &amp; Connection</option>
+                  <option value="Sensor Readings">Sensor Readings / Data Issue</option>
+                  <option value="Camera Log">Camera Log Issue</option>
+                  <option value="Manual Mode">Manual Mode</option>
+                  <option value="Bug Report">Bug Report</option>
+                  <option value="Feature Request">Feature Request</option>
+                  <option value="Privacy / Data Request">Privacy / Data Request</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="field-subject">Subject</label>
+                <input type="text" id="field-subject" name="subject" placeholder="Brief description of your issue">
+                <span class="error-msg" id="err-subject">Please enter a subject.</span>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="field-message">Message</label>
+                <textarea id="field-message" name="message" placeholder="Please describe your issue in detail. Include your device ID if relevant (found in Settings → device profile)." maxlength="2000"></textarea>
+                <div class="field-footer">
+                  <span class="field-hint">Include your Device ID for hardware-related issues</span>
+                  <span class="char-count"><span id="char-current">0</span> / 2000</span>
+                </div>
+                <span class="error-msg" id="err-message">Please describe your issue.</span>
+              </div>
+
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn-send">
+                <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                Open in Email App
+              </button>
+              <p class="send-note">Opens your default email app<br>pre-filled with your message.</p>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="alt-contact">
+        <div class="alt-icon"><svg viewBox="0 0 24 24" width="20" height="20" fill="#5B9EC9"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></div>
+        <div>
+          <div class="alt-label">Direct email</div>
+          <a href="mailto:TheRealLittercheck@outlook.com" class="alt-value">TheRealLittercheck@outlook.com</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <a href="index.html" class="footer-logo">
+        <div class="footer-logo-icon">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M11.5 2.5L2 8l9.5 5.5L21 8l-9.5-5.5zM2 13l9.5 5.5L21 13M2 18l9.5 5.5L21 18" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        LitterCheck
+      </a>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="support.html" style="color:var(--text)">Support</a>
+        <a href="index.html">Home</a>
+      </div>
+      <div class="footer-copy">© 2025 LitterCheck. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    // ── URL param pre-population ─────────────────────────────────────────────
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+
+      const map = {
+        name:     'field-name',
+        email:    'field-email',
+        subject:  'field-subject',
+        message:  'field-message',
+        category: 'field-category',
+      };
+
+      Object.entries(map).forEach(([param, id]) => {
+        const val = params.get(param);
+        if (!val) return;
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        if (el.tagName === 'SELECT') {
+          // Try to match an option value (case-insensitive)
+          const lower = val.toLowerCase();
+          const opt = Array.from(el.options).find(o =>
+            o.value.toLowerCase().includes(lower) ||
+            lower.includes(o.value.toLowerCase())
+          );
+          if (opt) el.value = opt.value;
+        } else {
+          el.value = val;
+        }
+      });
+
+      // Update char counter after pre-population
+      updateCharCount();
+
+      // If a topic param is present, open that FAQ item
+      const topic = params.get('topic');
+      if (topic) {
+        const topicMap = {
+          setup:       'faq-0',
+          connection:  'faq-1',
+          data:        'faq-2',
+          sensor:      'faq-2',
+          cats:        'faq-3',
+          manual:      'faq-4',
+          devices:     'faq-5',
+        };
+        const faqId = topicMap[topic.toLowerCase()];
+        if (faqId) {
+          const el = document.getElementById(faqId);
+          if (el) {
+            el.open = true;
+            setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+          }
+        }
+      }
+    })();
+
+    // ── Character counter ────────────────────────────────────────────────────
+    function updateCharCount() {
+      const msg = document.getElementById('field-message');
+      const counter = document.getElementById('char-current');
+      if (msg && counter) counter.textContent = msg.value.length;
+    }
+
+    document.getElementById('field-message').addEventListener('input', updateCharCount);
+
+    // ── Scroll to FAQ item ────────────────────────────────────────────────────
+    function scrollToFaq(index) {
+      const el = document.getElementById('faq-' + index);
+      if (!el) return;
+      el.open = true;
+      setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    }
+
+    // ── Form validation & mailto ──────────────────────────────────────────────
+    document.getElementById('support-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name     = document.getElementById('field-name').value.trim();
+      const email    = document.getElementById('field-email').value.trim();
+      const category = document.getElementById('field-category').value;
+      const subject  = document.getElementById('field-subject').value.trim();
+      const message  = document.getElementById('field-message').value.trim();
+
+      // Validation
+      let valid = true;
+
+      function setError(fieldId, errId, condition) {
+        const field = document.getElementById(fieldId);
+        const err   = document.getElementById(errId);
+        if (condition) {
+          field.classList.add('error');
+          err.classList.add('visible');
+          valid = false;
+        } else {
+          field.classList.remove('error');
+          err.classList.remove('visible');
+        }
+      }
+
+      setError('field-name',    'err-name',    !name);
+      setError('field-email',   'err-email',   !email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email));
+      setError('field-subject', 'err-subject', !subject);
+      setError('field-message', 'err-message', !message);
+
+      if (!valid) return;
+
+      // Build the mailto body
+      const bodyLines = [
+        'Name: '     + name,
+        'Email: '    + email,
+        'Category: ' + category,
+        '',
+        'Message:',
+        message,
+        '',
+        '---',
+        'Sent via LitterCheck Support Page',
+      ];
+
+      const mailSubject = '[LitterCheck Support] ' + category + ': ' + subject;
+      const mailBody    = bodyLines.join('\n');
+
+      const mailto = 'mailto:TheRealLittercheck@outlook.com'
+        + '?subject=' + encodeURIComponent(mailSubject)
+        + '&body='    + encodeURIComponent(mailBody);
+
+      // Open the email client
+      window.location.href = mailto;
+
+      // Show success banner
+      const banner = document.getElementById('success-banner');
+      banner.classList.add('visible');
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    // ── Live field clearing on input ─────────────────────────────────────────
+    ['field-name', 'field-email', 'field-subject', 'field-message'].forEach(id => {
+      document.getElementById(id).addEventListener('input', function () {
+        this.classList.remove('error');
+        const errId = 'err-' + id.replace('field-', '');
+        const err = document.getElementById(errId);
+        if (err) err.classList.remove('visible');
+      });
+    });
+  </script>
+</body>
+</html>
